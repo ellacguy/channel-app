@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Channel — Human Decency Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Static Overlay -->
+    <div class="static-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <div class="signal-icon">
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+            </div>
+            <span class="brand-text">Channel</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link active">Feed</a>
+            <a href="#" class="nav-link">My Breaks</a>
+            <a href="#" class="nav-link">Community</a>
+        </div>
+        <div class="nav-user">
+            <span class="location-badge">📍 Within 5 miles</span>
+            <div class="user-avatar">E</div>
+        </div>
+    </nav>
+
+    <!-- Hero / Broadcast Section -->
+    <header class="broadcast-section">
+        <div class="broadcast-container">
+            <div class="frequency-display">
+                <span class="freq-label">SCANNING LOCAL FREQUENCY</span>
+                <span class="freq-number">CH. 14 — NEARBY</span>
+            </div>
+            <h1 class="broadcast-title">
+                Break the silence.<br>
+                <span class="highlight">Not your spirit.</span>
+            </h1>
+            <p class="broadcast-subtitle">
+                Need a ride? Soup? A hand? Someone to sit with you?<br>
+                Broadcast your need. A neighbor will answer.
+            </p>
+
+            <button class="break-button" onclick="openBroadcastModal()">
+                <span class="break-icon">📡</span>
+                <span class="break-text">BREAKER BREAKER</span>
+                <span class="break-sub">Anyone on?</span>
+            </button>
+
+            <div class="online-status">
+                <span class="pulse-dot"></span>
+                <span class="status-text">47 humans listening on your frequency</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Three Tracks -->
+    <section class="tracks-section">
+        <div class="tracks-container">
+            <div class="track-card" data-track="pay">
+                <div class="track-icon">💵</div>
+                <h3 class="track-title">I'll Pay For It</h3>
+                <p class="track-desc">Dignity has a price tag. Need groceries delivered? A ride to urgent care? A couch moved? Pay fairly, receive kindly.</p>
+                <div class="track-examples">
+                    <span class="example-tag">Rides</span>
+                    <span class="example-tag">Errands</span>
+                    <span class="example-tag">Tasks</span>
+                </div>
+            </div>
+
+            <div class="track-card" data-track="trade">
+                <div class="track-icon">🔄</div>
+                <h3 class="track-title">I'll Trade For It</h3>
+                <p class="track-desc">I'll walk your dog if you help me lift a bookshelf. Skill for skill, kindness for kindness. Community currency.</p>
+                <div class="track-examples">
+                    <span class="example-tag">Skills</span>
+                    <span class="example-tag">Time</span>
+                    <span class="example-tag">Tools</span>
+                </div>
+            </div>
+
+            <div class="track-card" data-track="forward">
+                <div class="track-icon">💫</div>
+                <h3 class="track-title">Pay It Forward</h3>
+                <p class="track-desc">Someone helps you now. You help someone else when you're able. A decentralized circle of human decency.</p>
+                <div class="track-examples">
+                    <span class="example-tag">Kindness</span>
+                    <span class="example-tag">Trust</span>
+                    <span class="example-tag">Circle</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Feed -->
+    <section class="feed-section">
+        <div class="feed-header">
+            <h2 class="feed-title">
+                <span class="live-indicator">●</span> Live Requests
+            </h2>
+            <div class="feed-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="pay">Pay</button>
+                <button class="filter-btn" data-filter="trade">Trade</button>
+                <button class="filter-btn" data-filter="forward">Pay Forward</button>
+                <button class="filter-btn" data-filter="emergency">🚨 Now</button>
+            </div>
+        </div>
+
+        <div class="feed-grid" id="feedGrid">
+            <!-- Request Cards -->
+            <div class="request-card emergency" data-type="pay">
+                <div class="card-header">
+                    <div class="user-info">
+                        <div class="avatar" style="background: #ff6b6b;">J</div>
+                        <div class="user-meta">
+                            <span class="username">Jennerz22</span>
+                            <span class="distance">0.8 miles away • 2 min ago</span>
+                        </div>
+                    </div>
+                    <span class="track-badge pay">PAY</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="request-title">🚨 Need urgent care ride + pho pickup</h4>
+                    <p class="request-desc">I'm really sick (flu?) and need to get to urgent care. After, would love if someone could grab pho from Pho King on Main St. Will pay $40 + gas. Can someone sit with me in the waiting room? Anxiety is rough right now.</p>
+                    <div class="request-tags">
+                        <span class="tag">Ride</span>
+                        <span class="tag">Food</span>
+                        <span class="tag">Presence</span>
+                        <span class="tag">Sick Day</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="responses">
+                        <span class="response-count">3 people responded</span>
+                    </div>
+                    <button class="respond-btn" onclick="respondToRequest(this)">I Got You — 10-4</button>
+                </div>
+            </div>
+
+            <div class="request-card" data-type="trade">
+                <div class="card-header">
+                    <div class="user-info">
+                        <div class="avatar" style="background: #4ecdc4;">M</div>
+                        <div class="user-meta">
+                            <span class="username">Marco_Polo</span>
+                            <span class="distance">1.2 miles away • 15 min ago</span>
+                        </div>
+                    </div>
+                    <span class="track-badge trade">TRADE</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="request-title">Need help moving a couch — will trade!</h4>
+                    <p class="request-desc">Got a new couch delivered but it's stuck in my living room. Need one strong human (or two regular humans) to help maneuver it up a tight staircase. I'll trade: I make incredible sourdough bread, or I can walk your dog for a week.</p>
+                    <div class="request-tags">
+                        <span class="tag">Moving</span>
+                        <span class="tag">Heavy Lifting</span>
+                        <span class="tag">Barter</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="responses">
+                        <span class="response-count">1 person responded</span>
+                    </div>
+                    <button class="respond-btn" onclick="respondToRequest(this)">I Got You — 10-4</button>
+                </div>
+            </div>
+
+            <div class="request-card" data-type="forward">
+                <div class="card-header">
+                    <div class="user-info">
+                        <div class="avatar" style="background: #ffe66d;">A</div>
+                        <div class="user-meta">
+                            <span class="username">Alex_The_Great</span>
+                            <span class="distance">0.3 miles away • 32 min ago</span>
+                        </div>
+                    </div>
+                    <span class="track-badge forward">PAY FORWARD</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="request-title">Just need someone to sit with me while I open scary mail</h4>
+                    <p class="request-desc">I know this sounds silly but I have a stack of mail I'm terrified to open (bills, maybe bad news?). I just need a calm human presence for 20 minutes while I go through it. Can't pay right now, but I promise to pay this forward to someone else on the channel.</p>
+                    <div class="request-tags">
+                        <span class="tag">Emotional Support</span>
+                        <span class="tag">Presence</span>
+                        <span class="tag">20 min</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="responses">
+                        <span class="response-count">5 people responded</span>
+                    </div>
+                    <button class="respond-btn" onclick="respondToRequest(this)">I Got You — 10-4</button>
+                </div>
+            </div>
+
+            <div class="request-card" data-type="pay">
+                <div class="card-header">
+                    <div class="user-info">
+                        <div class="avatar" style="background: #a8e6cf;">S</div>
+                        <div class="user-meta">
+                            <span class="username">Sam_I_Am</span>
+                            <span class="distance">2.1 miles away • 1 hr ago</span>
+                        </div>
+                    </div>
+                    <span class="track-badge pay">PAY</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="request-title">Need a "stand in the house" person so I can shower safely</h4>
+                    <p class="request-desc">Chronic illness flare-up. I'm dizzy and weak but desperately need a shower. Just need someone to be in the house (living room is fine) in case I pass out. $25 for your time. Female preferred but anyone kind works.</p>
+                    <div class="request-tags">
+                        <span class="tag">Safety</span>
+                        <span class="tag">Health</span>
+                        <span class="tag">Presence</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="responses">
+                        <span class="response-count">2 people responded</span>
+                    </div>
+                    <button class="respond-btn" onclick="respondToRequest(this)">I Got You — 10-4</button>
+                </div>
+            </div>
+
+            <div class="request-card" data-type="trade">
+                <div class="card-header">
+                    <div class="user-info">
+                        <div class="avatar" style="background: #ff8b94;">T</div>
+                        <div class="user-meta">
+                            <span class="username">Tanya_Tools</span>
+                            <span class="distance">0.5 miles away • 2 hr ago</span>
+                        </div>
+                    </div>
+                    <span class="track-badge trade">TRADE</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="request-title">Borrow a drill for one afternoon?</h4>
+                    <p class="request-desc">Hanging shelves today and realized my drill died. Just need to borrow for 3 hours. I'll return it clean + bring you homemade cookies. Or I can help you with a small task in return.</p>
+                    <div class="request-tags">
+                        <span class="tag">Tools</span>
+                        <span class="tag">Quick</span>
+                        <span class="tag">Baking</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="responses">
+                        <span class="response-count">4 people responded</span>
+                    </div>
+                    <button class="respond-btn" onclick="respondToRequest(this)">I Got You — 10-4</button>
+                </div>
+            </div>
+
+            <div class="request-card" data-type="forward">
+                <div class="card-header">
+                    <div class="user-info">
+                        <div class="avatar" style="background: #c7ceea;">R</div>
+                        <div class="user-meta">
+                            <span class="username">Riley_Sunshine</span>
+                            <span class="distance">1.8 miles away • 3 hr ago</span>
+                        </div>
+                    </div>
+                    <span class="track-badge forward">PAY FORWARD</span>
+                </div>
+                <div class="card-body">
+                    <h4 class="request-title">Need a hug. Seriously.</h4>
+                    <p class="request-desc">This week has been brutal. Lost my job, cat is sick, apartment flooded. I just need a consensual, platonic hug from a kind human. 5 minutes max. I can't pay but I volunteer at the food bank every Saturday and I'll dedicate next week to extra shifts in your honor.</p>
+                    <div class="request-tags">
+                        <span class="tag">Hug</span>
+                        <span class="tag">Consent-Based</span>
+                        <span class="tag">Emotional</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="responses">
+                        <span class="response-count">8 people responded</span>
+                    </div>
+                    <button class="respond-btn" onclick="respondToRequest(this)">I Got You — 10-4</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Footer -->
+    <footer class="safety-footer">
+        <div class="safety-content">
+            <div class="safety-badge">🛡️ Safety First</div>
+            <p class="safety-text">Every interaction is rated. Verified humans only. Report anything weird immediately. <br>We believe in decency, but we verify it.</p>
+            <div class="safety-features">
+                <span class="safety-item">✓ Identity Verified</span>
+                <span class="safety-item">✓ Mutual Ratings</span>
+                <span class="safety-item">✓ In-App Check-ins</span>
+                <span class="safety-item">✓ Emergency Button</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Broadcast Modal -->
+    <div class="modal-overlay" id="broadcastModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBroadcastModal()">×</button>
+            <div class="modal-header">
+                <div class="modal-freq">CH. 14 — BROADCASTING</div>
+                <h2>What's your break?</h2>
+                <p>Your request goes out to nearby humans immediately.</p>
+            </div>
+
+            <form class="broadcast-form" onsubmit="submitBroadcast(event)">
+                <div class="form-group">
+                    <label>Choose your track</label>
+                    <div class="track-selector">
+                        <label class="track-option">
+                            <input type="radio" name="track" value="pay" checked>
+                            <span class="option-content">
+                                <span class="option-icon">💵</span>
+                                <span class="option-title">I'll Pay</span>
+                            </span>
+                        </label>
+                        <label class="track-option">
+                            <input type="radio" name="track" value="trade">
+                            <span class="option-content">
+                                <span class="option-icon">🔄</span>
+                                <span class="option-title">I'll Trade</span>
+                            </span>
+                        </label>
+                        <label class="track-option">
+                            <input type="radio" name="track" value="forward">
+                            <span class="option-content">
+                                <span class="option-icon">💫</span>
+                                <span class="option-title">Pay Forward</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>What do you need?</label>
+                    <input type="text" class="form-input" placeholder="e.g., Ride to urgent care, help moving couch, someone to sit with me..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tell us more</label>
+                    <textarea class="form-textarea" rows="4" placeholder="Details help people know if they can truly help you. Be honest, be specific, be human." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Tags (comma separated)</label>
+                        <input type="text" class="form-input" placeholder="Ride, Food, Presence, Sick Day...">
+                    </div>
+                    <div class="form-group half">
+                        <label>Urgency</label>
+                        <select class="form-select">
+                            <option>Within the hour</option>
+                            <option>Today</option>
+                            <option>This week</option>
+                            <option>Flexible</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the Decency Code: No creeps, no scams, no strings attached. Just humans helping humans.</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-break">
+                    <span class="submit-icon">📡</span>
+                    BREAKER BREAKER — SEND IT OUT
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Response Toast -->
+    <div class="toast" id="responseToast">
+        <span class="toast-icon">📻</span>
+        <span class="toast-text">10-4. Your response is live. They're notified.</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
